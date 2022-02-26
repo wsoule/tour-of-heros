@@ -69,8 +69,7 @@ import { Hero } from './hero';
       <label>POWER: </label>
       {{chosenHero.power}}
       </div>
-    </div>
-
+  </div>
   <p>Heroes:</p>
   <ul class="heroes">
     <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
@@ -84,7 +83,7 @@ export class AppComponent  {
   title = 'Tour of Heros';
   HEROES: Hero[] = [
     { id: 1, name: 'Windstorm', power: 'Conjures some big ass wind'},
-    { id: 2, name: 'Fatboy', power:'The name says it all. He is fat'},
+    { id: 2, name: 'Fatboy', power:'The name says it all. He is fat.'},
     { id: 3, name: 'Magnetic Man', power: 'Magneto rip off. Does what magneto does'},
     { id: 4, name: 'Repulsor', power: 'Just like me with women, Repulsor pushes things away from her'},
     { id: 5, name: 'Numba 5'},
