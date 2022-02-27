@@ -1,6 +1,20 @@
 import { Component } from '@angular/core';
 import { Hero } from './hero';
 
+const HEROES: Hero[] = [
+  { id: 1, name: 'Windstorm', power: 'Conjures some big ass wind', alterEgo: 'Albert Macho'},
+  { id: 2, name: 'Fatboy', power:'The name says it all. He is fat.'},
+  { id: 3, name: 'Magnetic Man', power: 'Magneto rip off. Does what magneto does'},
+  { id: 4, name: 'Repulsor', power: 'Just like me with women, Repulsor pushes things away from her'},
+  { id: 5, name: 'Numba 5'},
+  { id: 6, name: 'Numba 6'},
+  { id: 7, name: 'Numba 7'},
+  { id: 8, name: 'Numba 8'},
+  { id: 9, name: 'Numba 9'},
+  { id: 10, name: 'Numba 10'}
+]
+
+
 @Component({
   selector: 'my-app',
   styles: [`
@@ -55,45 +69,22 @@ import { Hero } from './hero';
   template: `
   <h1>{{title}}</h1>
   <h2>My favorite hero is: {{myHero.name}}!</h2>
-  <div *ngIf="chosenHero">
-    <h3>{{chosenHero.name}} details!</h3>
-    <div>
-      <label>id: </label>
-      {{chosenHero.id}}
-    </div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="chosenHero.name" placeholder="name">
-    </div>
-    <div *ngIf="chosenHero.power">
-      <label>POWER: </label>
-      {{chosenHero.power}}
-      </div>
-  </div>
+  
   <p>Heroes:</p>
   <ul class="heroes">
-    <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </li>
+  <li *ngFor="let hero of heroes" 
+  [class.selected]="hero === chosenHero"
+  (click)="onSelect(hero)">
+  <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
   </ul>
+  <hero-detail [hero]="chosenHero"></hero-detail>
   `
 })
 export class AppComponent  { 
   name = 'Angular'; 
   title = 'Tour of Heros';
-  HEROES: Hero[] = [
-    { id: 1, name: 'Windstorm', power: 'Conjures some big ass wind'},
-    { id: 2, name: 'Fatboy', power:'The name says it all. He is fat.'},
-    { id: 3, name: 'Magnetic Man', power: 'Magneto rip off. Does what magneto does'},
-    { id: 4, name: 'Repulsor', power: 'Just like me with women, Repulsor pushes things away from her'},
-    { id: 5, name: 'Numba 5'},
-    { id: 6, name: 'Numba 6'},
-    { id: 7, name: 'Numba 7'},
-    { id: 8, name: 'Numba 8'},
-    { id: 9, name: 'Numba 9'},
-    { id: 10, name: 'Numba 10'}
-  ]
-  heroes = this.HEROES;
+  heroes = HEROES;
   myHero = this.heroes[1];
   chosenHero: Hero;
   onSelect(hero: Hero): void{
