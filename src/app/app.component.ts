@@ -14,7 +14,6 @@ const HEROES: Hero[] = [
   { id: 10, name: 'Numba 10'}
 ]
 
-
 @Component({
   selector: 'my-app',
   styles: [`
